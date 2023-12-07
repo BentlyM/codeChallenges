@@ -66,7 +66,9 @@ int main() {
 }
 
 void readInPartners(partnerRec arr[], int& size) {
-	fstream inFile("ladies", ios::app);
+	fstream inFile;
+	inFile.open("ladies", ios::in);
+	
 	if (!inFile) {
 		cout << "\nCritical Error... File Not Found.";
 			exit(EXIT_FAILURE);
