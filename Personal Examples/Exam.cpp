@@ -13,6 +13,7 @@ const int STUDENT_CAPACITY = 25;
 
 void readInFile(classExam[] , int&);
 void displayStudents(int);
+double calcAvg(classExam[]);
 
 int main(){
     const int STUDENTS = 1, AVG_SCORE = 2, QUIT = 3;
@@ -43,6 +44,8 @@ int main(){
             getline(inFile, result2.results); // def a easier way to do this but i thought outside the box at least
         }
 
+        avgScore = calcAvg(scores);
+
         cout << "\n" << result2.results << ": " << avgScore << "\n" << endl;
 
         break;
@@ -70,6 +73,7 @@ void readInFile(classExam scores[] , int &numStudents){
     numStudents = 0;
     while(inFile >> scores[i].students){
         numStudents++;
+        i++;
     };
 
     inFile.close();
@@ -88,4 +92,16 @@ void displayStudents(int numStudents){
     cout << "\n" << resultStudents << ": " << numStudents << "\n" << endl;
 
     inFile.close();
+}
+
+double calcAvg(classExam scores[]){
+    double sum = 0;
+    int numStudents = 0;
+
+    readInFile(scores, numStudents);
+
+    for(int i = 0; i < numStudents; i++){
+        sum += scores[i].students;
+        } // i had a really hard time making this work 
+        return sum/numStudents;
 }
