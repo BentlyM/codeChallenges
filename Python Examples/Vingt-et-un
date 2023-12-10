@@ -21,6 +21,8 @@
 
 import random
 
+# Display Rules
+
 def display_rules():
     print("\nVingt-et-un Rules:")
     print("1. The game is played with a standard deck of 52 cards.")
@@ -34,9 +36,12 @@ def display_rules():
     print("9. If neither player wins, the game continues until one player reaches a hand value of 2 or 1.")
     print("10. The player with the higher hand value wins the game.")
 
+
+# use random lib to generate dice selection 
 def roll_dice(num_dice):
     return random.randint(1, 6) * num_dice
 
+# prompt user decision
 def player_turn(total):
     roll = input("Roll the dice? (y/n): ").lower()
     if roll == 'y':
@@ -48,6 +53,7 @@ def player_turn(total):
         print("Invalid input. Please enter 'y' or 'n'.")
         return player_turn(total)
 
+# generate house turn
 def house_turn(total):
     if total < 17:
         house_roll = roll_dice(2)
@@ -57,6 +63,7 @@ def house_turn(total):
         print("House stays.")
         return total
 
+# keeps score of rounds
 def play_round(player_name):
     player_total = 0
     house_total = 0
@@ -93,6 +100,7 @@ def play_round(player_name):
                 print("It's a tie!")
                 return "Tie"
 
+# main displays result and prompts for name and choices
 def main():
     print("Welcome to Vingt-et-un!")
     player_name = input("Enter your name: ")
