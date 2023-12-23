@@ -16,5 +16,10 @@ int main(){
     cin >> word;
     cout << "Enter the number of times to repeat: ";
     cin >> repeats;
-
+    if(repeats < MAX_REPEATS){
+        for(int i = 0; i < repeats; i++)
+        cout << word;
+    }else{
+        cout << "\nThat is to many Repeats!!";
+    }
 }
