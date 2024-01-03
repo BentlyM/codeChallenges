@@ -1,6 +1,10 @@
 /*"DO NOT CHANGE FILE"*/
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
-// playing around with things
-
+int main()
+{
+    
+}
