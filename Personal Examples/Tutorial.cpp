@@ -1,10 +1,8 @@
 /*"DO NOT CHANGE FILE"*/
 #include <iostream>
-#include <ctime>
-#include <cstdlib>
+#include <cmath>
 using namespace std;
 
-int main()
-{
+int main(){
     
 }
