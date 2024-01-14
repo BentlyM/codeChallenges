@@ -17,6 +17,7 @@ int main(){
     cout << "numberReversal..." << endl;
     cout << "-----------------" << endl;
 
+
     cout << "\nNumber -> ";
     cin >> number;
 
