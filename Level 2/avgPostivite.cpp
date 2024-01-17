@@ -22,7 +22,7 @@ int main(){
             numbers.push_back(value);
             count++;
         }else{
-            ;
+            break;
         }
      }while(count != MAX_NUMBERS);
 
