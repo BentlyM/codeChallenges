@@ -1,7 +1,7 @@
-#include <iostream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
+#include <iostream> // input output
+#include <string> // string variables
+#include <ctime> // set time
+#include <cstdlib> // srand and rand 
 
 using namespace std;
 
