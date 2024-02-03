@@ -2,16 +2,15 @@
 using namespace std;
 
 int main(){
-    int number1,number2;
-    cout << "Enter the first number: ";
-    cin >> number1;
+    cout << "Even or Odd Checker...\n" << endl;
 
-    cout << "Enter the second number: ";
-    cin >> number2;
+    int number;
+    cout << "Enter a  number: ";
+    cin >> number;
 
-    cout << "sum: " << number1+number2 << endl;
-    cout << "Difference: " << number1-number2 << endl;
-    cout << "Product: " << number1*number2 << endl;
-    cout << "Quotient: " << number1/number2 << endl;
-
+    if(number % 2 != 0){
+        cout << number << " is an odd number";
+    }else{
+        exit(EXIT_FAILURE);
+    }
 }
