@@ -37,7 +37,6 @@ int main(){
             "5. Exit\n";
         cout << "-->";
         cin >> choice;
-        cin.ignore();
 
         cout << endl;
 
@@ -52,7 +51,10 @@ int main(){
                 cout << "You have reached the max amount of task(per Run)" << endl;
                 exit(EXIT_SUCCESS);
             }
+
+
             break;
+
 
             case VIEW:
             viewlist(newTask, increment); 
@@ -66,7 +68,7 @@ int main(){
             cout << "Numer inputted is incorrect " << endl;
             break;
         }
-    }while(choice != 5);
+    }while(choice != EXIT);
 }
 
 void ReadInFile(string fileName, string newTask[], int& increment){
