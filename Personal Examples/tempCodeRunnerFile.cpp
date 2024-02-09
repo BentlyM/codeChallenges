@@ -1,1 +1,0 @@
-cout << increment  << endl;
