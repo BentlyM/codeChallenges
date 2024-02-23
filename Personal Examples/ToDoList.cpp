@@ -2,111 +2,121 @@
 #include <string>
 #include <iomanip>
 #include <fstream>
+#include <limits> // Include for numeric_limits
 using namespace std;
 
-//constant variables
-const int ADD = 1, VIEW = 2, MARK = 3, DELETE = 4, EXIT = 5;
+// Constant variables
+const int ADD = 1, VIEW = 2, MARK = 3, DELETE_OPTION = 4, EXIT_OPTION = 5;
 const int MAX_TASK = 20;
 
-// function prototypes
-void ReadInFile(string,string[],int&);
-string addlist(string);
-void viewlist(string[], int);
+// Function prototypes
+void readInFile(string, string[], int&);
+void addTask(string, string[], int&);
+void viewTasks(const string[], int);
+// Add more function prototypes as needed
 
-int main(){
+int main() {
     cout << "\nTo-do List....\n" << endl;
 
     int choice;
-    string newTask[MAX_TASK];
-    int increment;
+    string tasks[MAX_TASK];
+    int taskCount = 0;
 
     string fileName;
-    cout << "To which File? ->";
+    cout << "Enter the filename: ";
     cin >> fileName;
 
-    // add function here so that line can be read before they wish to add a new task
-    ReadInFile(fileName, newTask, increment);
+    // Read existing tasks from the file
+    readInFile(fileName, tasks, taskCount);
 
-
-    do{
-        cout << "\nOptions: " << "\n";
-        cout << "1. Add Task\n" <<
-            "2. View Task\n" << 
-            "3. Mark Task\n" <<
-            "4. Delete Task\n" << 
-            "5. Exit\n";
-        cout << "-->";
+    do {
+        cout << "\nOptions: \n"
+            << "1. Add Task\n"
+            << "2. View Tasks\n"
+            << "3. Mark Task\n"
+            << "4. Delete Task\n"
+            << "5. Exit\n";
+        cout << "--> ";
         cin >> choice;
 
-        cout << endl;
+        // Handle invalid input
+        if (cin.fail()) {
+            cout << "Invalid input. Please enter a number." << endl;
+            cin.clear(); // Clear the error flag
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+            continue;
+        }
 
-        switch(choice){
+        switch (choice) {
             case ADD:
-
-            newTask[increment] = addlist(fileName);
-
-            if(increment != MAX_TASK){
-                increment++;
-            }else{
-                cout << "You have reached the max amount of task(per Run)" << endl;
-                exit(EXIT_SUCCESS);
-            }
-
-
-            break;
-
+                addTask(fileName, tasks, taskCount);
+                break;
 
             case VIEW:
-            viewlist(newTask, increment); 
-            break;
+                viewTasks(tasks, taskCount);
+                break;
 
-            case EXIT:
-            cout << "you have exitted the program" << endl;
-            return -1;
+            // Add cases for other options
+
+            case EXIT_OPTION:
+                cout << "Exiting the program." << endl;
+                break;
 
             default:
-            cout << "Numer inputted is incorrect " << endl;
-            break;
+                cout << "Invalid choice. Please try again." << endl;
         }
-    }while(choice != EXIT);
+
+    } while (choice != EXIT_OPTION);
+
+    return 0;
 }
 
-void ReadInFile(string fileName, string newTask[], int& increment){
-    fstream inFile(fileName, ios::in);
+void readInFile(string fileName, string tasks[], int& taskCount) {
+    ifstream inFile(fileName);
 
-    increment = 0;
+    taskCount = 0;
 
-    while(inFile >> newTask[increment]){
-        increment++;
+    while (taskCount < MAX_TASK && getline(inFile , tasks[taskCount])) {
+        taskCount++;
     }
 
     inFile.close();
 }
 
-
-string addlist(string fileName){
-    fstream outFile;
-    outFile.open(fileName, ios::app);
-    
-    string task;
-
-    if(!outFile){
-        cout << "Could not open file" << endl;
-        exit(EXIT_FAILURE);
+void addTask(string fileName, string tasks[], int& taskCount) {
+    if (taskCount == MAX_TASK) {
+        cout << "You have reached the maximum number of tasks." << endl;
+        return;
     }
 
-    cout << "Whats your Task? - ";
-    getline(cin , task);
-    outFile << task << endl;
+    ofstream outFile(fileName, ios::app);
+
+    if (!outFile) {
+        cout << "Could not open file for writing." << endl;
+        return;
+    }
+
+    cin.ignore(); // Clear the newline character from the buffer
+
+    cout << "Enter your task: ";
+    getline(cin, tasks[taskCount]);
+
+    outFile << tasks[taskCount] << endl;
+    taskCount++;
 
     outFile.close();
 
-    return task;
+    cout << "Task added successfully." << endl;
 }
 
-void viewlist(string newTask[], int increment){
-    for(int i = 0; i < increment; i++){
-        cout << newTask[i]<<endl;
+void viewTasks(const string tasks[], int taskCount) {
+    if (taskCount == 0) {
+        cout << "No tasks available." << endl;
+        return;
+    }
+
+    cout << "Tasks:\n";
+    for (int i = 0; i < taskCount; i++) {
+        cout << i + 1 << ". " << tasks[i] << endl;
     }
 }
-
