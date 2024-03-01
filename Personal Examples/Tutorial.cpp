@@ -36,6 +36,8 @@ string addTool();
 int main(){
 
     int choice;
+    toolBox tAcquire;
+
     do{
     cout << "\nToolBox..." << "\n";
     cout << "1. Add Tool\n"
@@ -79,5 +81,31 @@ int main(){
     }
 
     }while(choice != 6);
+
+}
+
+// add tools
+string addTool(){
+    
+    int i = 0;
+    
+
+    for(i = 0; i < MAX_CATEGORY; i++){
+        if(i != MAX_CATEGORY){
+    for(i = 0; i < MAX_TOOL; i++){
+        if(i != MAX_TOOL){
+            // write code here
+        }else{
+        cout << "You have reached the max amount of tools..." << "\n";
+        continue;
+        }
+    }
+        }else{
+        cout << "You have reached the max amount of catergories..." << "\n";
+        continue;
+    }
+}
+
+
 
 }
