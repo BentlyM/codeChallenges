@@ -21,16 +21,16 @@ using namespace std;
 
 struct toolBox{
     string tool;
-    string category;
 };
 
 //constants
 const int ADD = 1, REMOVE = 2, SEARCH = 3, TOOL = 4, CHECK = 5, EXIT = 6;
-const int MAX_CATEGORY = 6;
-const int MAX_TOOL = 12;
+const int MAX_CATEGORY = 7;
+const int MAX_TOOL = 6;
+const string CATEGORIES[MAX_CATEGORY][MAX_TOOL] = {"Cutting","Measuring","Fastening","Marking","Finishing","Gripping","Safety"};
 
 //variable prototypes
-string addTool();
+string addTool(toolBox);
 
 
 int main(){
@@ -60,7 +60,7 @@ int main(){
 
     switch(choice){
         case ADD:
-        addTool();
+        addTool(tAcquire);
         break;
         case REMOVE:
         ;
@@ -85,27 +85,6 @@ int main(){
 }
 
 // add tools
-string addTool(){
+string addTool(toolBox tAcquire){
     
-    int i = 0;
-    
-
-    for(i = 0; i < MAX_CATEGORY; i++){
-        if(i != MAX_CATEGORY){
-    for(i = 0; i < MAX_TOOL; i++){
-        if(i != MAX_TOOL){
-            // write code here
-        }else{
-        cout << "You have reached the max amount of tools..." << "\n";
-        continue;
-        }
-    }
-        }else{
-        cout << "You have reached the max amount of catergories..." << "\n";
-        continue;
-    }
-}
-
-
-
 }
