@@ -1,40 +1,19 @@
 #include <iostream>
- using namespace std;
+using namespace std;
 
-// function prototypes
-void insertEnd(int[], int, int, int);
-void removeMiddle(int[],int,int);
+int main(){
+    int myArr[] = {1,1,1,2,2,3,3,3,4,4,4,4,5,5,5};
 
- int main(){
-    const int length = 3; // constant length
-    int i = 0; // incermenting number
-    int n = 0; // capacity number
-    int tempNum; // temporary number
-    int myArray[length] = {5,6,7};
+    int j = 1;
 
-    // insertEnd(myArray, i , length, tempNum);
-        
-    // removeMiddle(myArray, i , length);
-    
-
-    
-    tempNum = sizeof(myArray)/sizeof(myArray[0]);
-    cout << "\nthe Length: " << tempNum << endl;
- }
-
- void insertEnd(int myArr[], int i, int length, int tempNum){
-    if(length > 0){
-        myArr[length - 1] = 0;
-
-        for(i = 0; i < length; i++){
-            cout << myArr[i] << " ";
+    for(int i = 0; i < sizeof(myArr)/sizeof(myArr[0]); i++){
+        if(myArr[i] != myArr[i - 1]){
+            myArr[j] = myArr[i];
+            j++;
+            cout << myArr[i] << endl;
         }
     }
- }
 
- void removeMiddle(int myArr[], int i, int length){
-    for (int index = i + 1; index < length; index++){
-         myArr[index - 1] = myArr[index];
-         cout << myArr[index] << " ";
-    }
- }
+    cout << "The size of this array is " << sizeof(myArr)/sizeof(myArr[0]) << "\n";
+    cout << "Number of repeative values is " << j;
+} 
