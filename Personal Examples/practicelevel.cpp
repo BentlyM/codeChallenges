@@ -15,5 +15,6 @@ int main(){
     }
 
     cout << "The size of this array is " << sizeof(myArr)/sizeof(myArr[0]) << "\n";
-    cout << "Number of repeative values is " << j;
+    cout << "Number of repeative values is " << j << "\n";
+    cout << "the initial value of myArr[i - 1]: " << myArr[j - 1];
 } 
