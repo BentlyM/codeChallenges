@@ -1,20 +1,43 @@
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
+#include <vector>
 using namespace std;
 
-int main(){
-    int myArr[] = {1,1,1,2,2,3,3,3,4,4,4,4,5,5,5};
-
-    int j = 1;
-
-    for(int i = 0; i < sizeof(myArr)/sizeof(myArr[0]); i++){
-        if(myArr[i] != myArr[i - 1]){
-            myArr[j] = myArr[i];
-            j++;
-            cout << myArr[i] << endl;
-        }
+class Number{
+    public:
+    Number(){
+        cout << "Coding interview...\n";
     }
 
-    cout << "The size of this array is " << sizeof(myArr)/sizeof(myArr[0]) << "\n";
-    cout << "Number of repeative values is " << j << "\n";
-    cout << "the initial value of myArr[i - 1]: " << myArr[j - 1];
-} 
+    int insertNum(int& i){
+        int num;
+        int j = 0;
+        do{
+            cout << "--> ";
+            cin >> num;
+            value.push_back(num);
+            i++;
+            if(value[j] == value[i - 1]){
+                value[i] = value[j];
+                j++;
+            }
+        }while(num);
+
+        for(i = 1; i < value.size(); i++){
+            cout << "\n" << value[i - 1] << " ";
+        }
+        return i;
+    }
+
+    private:
+    vector<int> value;
+};
+
+int main(){
+    Number nKey;
+    int incerment = 0;
+    int totalElements = nKey.insertNum(incerment);
+    cout << "\nincerments: " << incerment;
+
+}
