@@ -1,27 +1,22 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 #include <vector>
 using namespace std;
 
-vector<int>* resize(vector<int>& Arr){
-    vector<int>* ans = new vector<int>();
-
-    for(int j = 0; j < Arr.size(); j++){
-            ans->push_back(Arr[j]);
-    }
-    for(int j = 0; j < Arr.size(); j++){
-            ans->push_back(Arr[j]); 
-    }
-    return ans;
-}
-
 int main(){
-    vector<int> myArr = {1,2,1};
-    
-    vector<int>* newArray = resize(myArr);
-    for(int increment = 0; increment < newArray->size(); increment++){
-        cout << (*newArray)[increment] << " ";
-    }
-    cout << endl;
+    fstream inFile("listScrape", ios::in);
+    string sentence;
+    vector<string> prints;
 
-    delete newArray;
+    while(getline(inFile, sentence))
+    {
+        prints.push_back(sentence);
+        sentence = " ";
+    }
+
+    for(int j = 0; j < prints.size(); j++)
+        cout << prints[j] << "\n";
+
+    inFile.close();
 }
