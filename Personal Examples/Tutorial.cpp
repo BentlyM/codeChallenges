@@ -1,4 +1,11 @@
 /*"DO NOT CHANGE FILE"*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <iomanip>
+using namespace std;
+
 /*Current Project Automated ToolBox Inventory System*/
 /*
     -- Implement a toolbox inventory(remove,add,display) --incompelete
@@ -12,13 +19,6 @@
 
 */
 
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <iomanip>
-
-using namespace std;
-
 struct toolBox{
     string tool;
 };
@@ -27,14 +27,14 @@ struct toolBox{
 const int ADD = 1, REMOVE = 2, SEARCH = 3, TOOL = 4, CHECK = 5, EXIT = 6;
 const int MAX_CATEGORY = 7;
 const int MAX_TOOL = 6;
-const string CATEGORIES[MAX_CATEGORY][MAX_TOOL] = {"Cutting","Measuring","Fastening","Marking","Finishing","Gripping","Safety"};
+const string CATEGORIES[MAX_CATEGORY] = {"Cutting","Measuring","Fastening","Marking","Finishing","Gripping","Safety"};
 
 //variable prototypes
 string addTool(toolBox);
+string readInFile();
 
 
 int main(){
-
     int choice;
     toolBox tAcquire;
 
@@ -57,6 +57,8 @@ int main(){
             cin.ignore(); // Discard invalid input
             continue;
     }
+
+    readInFile();
 
     switch(choice){
         case ADD:
@@ -81,6 +83,12 @@ int main(){
     }
 
     }while(choice != 6);
+
+    inFile.close();
+}
+
+// read tools already in file
+string readInFile(){
 
 }
 

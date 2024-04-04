@@ -1,15 +1,36 @@
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
+#include <string>
 using namespace std;
 
-int main(void) {
-    int num;
-    cout << "Enter a number: ";
-    cin >> num;
+string FavFood(string name){
+    string foods = "";
 
-    if(num % 2 != 0){
-        cout << num << " is an odd number." << endl;
-    }else{
-        cout << "this number is even i need odd  numbers";
-        exit(EXIT_SUCCESS);
-    }
+    cout << "Hi " << name << "please emter your 3 favorite foods by a space:";
+    getline(cin , foods);
+
+    return foods;
+}
+
+string FavNums(){
+
+}
+
+
+int main(){
+    string fullname = "", firstname = "", lastname = "";
+    string foods = "", newFood = "", play_again = "";
+    int newNum = 0 , nums = 0;
+
+    cout << "Welcome to my program!!" << "\n";
+    cout << "Enter your fullname";
+    getline(cin , fullname);
+    int spaceIndex = fullname.find(" ");
+    string firstName = fullname.substr(0, spaceIndex);
+    string lastName = fullname.substr(spaceIndex + 1);
+
+    printf("Let's get started...");
+    newFood = FavFood(fullname);
+
 }
