@@ -13,7 +13,7 @@ int main(){
 
     // If we get here, all tests passed!
 
-    cout << "All tests passed!" << endl;
+    std::cout << "All tests passed!" << std::endl;
 
     return 0;
 }
