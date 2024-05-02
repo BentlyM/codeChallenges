@@ -8,5 +8,4 @@ Test::Test (){
 
 void Test::run(){
     cout << "Test" << endl;
-    
 }
