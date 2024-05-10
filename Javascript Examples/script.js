@@ -4,6 +4,7 @@ const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
 const valid3 = [3, 7, 1, 6, 1, 2, 0, 1, 9, 9, 8, 5, 2, 3, 6];
 const valid4 = [6, 0, 1, 1, 1, 4, 4, 3, 4, 0, 6, 8, 2, 9, 0, 5];
 const valid5 = [4, 5, 3, 9, 4, 0, 4, 9, 6, 7, 8, 6, 9, 6, 6, 6];
+const valid6 = [4, 5, 3, 9, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
 
 // All invalid credit card numbers
 const invalid1 = [4, 5, 3, 2, 7, 7, 8, 7, 7, 1, 0, 9, 1, 7, 9, 5];
@@ -25,7 +26,28 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+const validateCred = (arr) => {
+  let tempArr = arr;
+  // luhn algorithm
+  for(let i = tempArr.length - 2;i >= 0;i -= 2){
+    tempArr[i] *= 2;
+    if(tempArr[i] > 9){
+      tempArr[i] = tempArr[i] - 9;
+    }
+  }
 
+  console.log(tempArr);
+
+  let sum = tempArr.reduce((a,b) => a + b);
+    if(sum % 10 === 0){
+      return 'valid';
+    }
+    else{
+      return 'invalid';
+    }
+}
+
+console.log(validateCred(valid6));
 
 
 
