@@ -64,5 +64,4 @@ const returnRandBase = () => {
     }
   }
   
-console.log(pAequorFactory(Math.floor(Math.random()*10), returnRandBase()));
 console.log(pAequorFactory(Math.floor(Math.random()*10), returnRandBase()).mutate());
