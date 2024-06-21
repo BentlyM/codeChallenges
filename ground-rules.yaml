@@ -1,0 +1,16 @@
+javascript: ->
+Some ground rules:
+  1. modules should be self contained
+    - everything to do with my module is in my module
+    - little to no global variables
+    - if a module manages more than one thing it should be split up to another method/function (single responsibility)
+  2. separation of concerns
+  - DRY code: Don't repeat Yourself
+  - KISS: Keep it Simple Stupid
+  - YAGNI: You Ain't Gonna Need It (don't over engineer)
+  3. effect DOM/variable/property usage
+    - if it looks reusable REUSE IT. (do not just create another call)
+  4. no memory leaks
+    - all events can be unbound
+  
+Cpp: ->
