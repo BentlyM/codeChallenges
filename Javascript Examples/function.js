@@ -1,29 +1,42 @@
-class Vehicle {
-  constructor(make , model, year){
-    this.make = make;
-    this.model = model;
-    this.year = year;
-  }
+class Person {
 
-  displayDetails(){
-   return `Make: ${this.make}, Model: ${this.model}, Year: ${this.year}`;
-  }
+    static get species (){ return `Homo sapiens` } ;
+
+
+    static speciesSentence(){
+        return `Humans are classified as ${this.species}`;
+    }
+
+    constructor(firstName , lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.hasJob = false;
+    }
+
+    fullName(){
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    setFirstName(currentFirstName){
+        this.firstName = currentFirstName;
+    }
+
+    setLastName(lastName){
+        this.lastName = lastName;
+    }
+
+    set setFullName(name){
+        name = name.split(' ');
+        this.setFirstName(name[0]);
+        this.setLastName(name[1]);
+    }
 }
 
-class Car extends Vehicle {
-  constructor(make, model, year, doors){
-    super(make,model,year)
-    this.doors = doors;
-  }
-  displayDetails(){
-    return `${super.displayDetails()} Doors: ${this.doors}`;
-   }
-}
 
-// Car.prototype.displayDetails = function(){
-//   return `Make: ${this.make}, Model: ${this.model}, Year: ${this.year} Doors: ${this.doors}`;
-// }
+const person1 = new Person('Timmy' , 'Turner');
 
-const Nissan = new Car('Nissan','Ultima','2021','4');
+console.log(`initial: ${person1.fullName()}`);
 
-console.log(Nissan.displayDetails());
+person1.setFullName = 'Jammy Doe';
+
+console.log(`Current: ${person1.fullName()}`);
