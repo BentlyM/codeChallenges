@@ -1,42 +1,12 @@
-class Person {
-
-    static get species (){ return `Homo sapiens` } ;
-
-
-    static speciesSentence(){
-        return `Humans are classified as ${this.species}`;
-    }
-
-    constructor(firstName , lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.hasJob = false;
-    }
-
-    fullName(){
-        return `${this.firstName} ${this.lastName}`;
-    }
-
-    setFirstName(currentFirstName){
-        this.firstName = currentFirstName;
-    }
-
-    setLastName(lastName){
-        this.lastName = lastName;
-    }
-
-    set setFullName(name){
-        name = name.split(' ');
-        this.setFirstName(name[0]);
-        this.setLastName(name[1]);
-    }
+const data = () => {
+    return new Promise((resolve , reject)=>{
+        fetch('https://jsonplaceholder.typicode.com/todos/1').then(myObj => myObj.json())
+        .then(data => resolve(data));
+    })
 }
 
+const promise = data();
 
-const person1 = new Person('Timmy' , 'Turner');
-
-console.log(`initial: ${person1.fullName()}`);
-
-person1.setFullName = 'Jammy Doe';
-
-console.log(`Current: ${person1.fullName()}`);
+promise.then((foo) => {
+    console.log(foo);
+})
