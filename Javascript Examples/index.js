@@ -108,4 +108,37 @@ function totalIntegers(array){
 	return total + totalIntegers(array);
 }
 
-console.log(totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]));
+// console.log(totalIntegers([[[5], 3], 0, 2, ['foo'], [], [4, [5, 6]]]));
+
+
+const mergeSorted = (arr) => {
+    if (arr.length <= 1) {
+      return arr;
+    }
+  
+    const split = Math.ceil(arr.length / 2);
+    const leftSide = arr.slice(0, split);
+    const rightSide = arr.slice(split);
+  
+    return merge(mergeSorted(leftSide), mergeSorted(rightSide));
+  };
+  
+  const merge = (left, right) => {
+    const result = [];
+    let i = 0;
+    let j = 0;
+  
+    while (i < left.length && j < right.length) {
+      if (left[i] < right[j]) {
+        result.push(left[i]);
+        i++;
+      } else {
+        result.push(right[j]);
+        j++;
+      }
+    }
+  
+    return result.concat(left.slice(i)).concat(right.slice(j));
+  };
+  
+console.log(mergeSorted([3, 4, 1, 6, 2, 5]));
