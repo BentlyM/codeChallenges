@@ -1,4 +1,3 @@
-
 class ListNode {
     constructor(data) {
         this.data = data
@@ -6,7 +5,7 @@ class ListNode {
     }
 }
 
-class linkedList {
+class LinkedList {
     constructor(head = null){
         this.head = head;
     }
@@ -47,22 +46,28 @@ class linkedList {
 
     getLast() {
         let lastNode = this.head;
-        if (lastNode) {
-            while (lastNode.next) {
-                lastNode = lastNode.next
-            }
+        if (!lastNode) {
+            return null;
+        }
+        while (lastNode.next) {
+            lastNode = lastNode.next
         }
         return lastNode
     }
 
     getFirst() {
-        return this.head;
+        return this.head? this.head : null;
     }
-    
 }
 
-const list = new linkedList();
-list.append("dog");
-list.prepend('cat');
-list.append('kitty');
+const node1 = new ListNode('1');
+const node2 = new ListNode('2');
+node1.next = node2;
+
+const list = new LinkedList(node1);
+
+list.append('some other data');
+console.log(list.getLast());
+
+
 console.log(list);
