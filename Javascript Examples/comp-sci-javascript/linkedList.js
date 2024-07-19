@@ -1,63 +1,63 @@
 class ListNode {
-    constructor(data) {
-        this.data = data
-        this.next = null                
-    }
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
 }
 
 class LinkedList {
-    constructor(head = null){
-        this.head = head;
-    }
+  constructor(head = null) {
+    this.head = head;
+  }
 
-    append(value){
-        let newNode = new ListNode(value)
-        if(!this.head){
-            this.head = newNode;
-        }else{
-            let currentNode = this.head;
-            while(currentNode.next){
-                currentNode = currentNode.next;
-            }
+  append(value) {
+    let newNode = new ListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      let currentNode = this.head;
+      while (currentNode.next) {
+        currentNode = currentNode.next;
+      }
 
-            currentNode.next = newNode;
-        }
+      currentNode.next = newNode;
     }
+  }
 
-    prepend(value) {
-        let newNode = new ListNode(value);
-        if (!this.head) {
-            this.head = newNode;
-        } else {
-            newNode.next = this.head;
-            this.head = newNode;
-        }
+  prepend(value) {
+    let newNode = new ListNode(value);
+    if (!this.head) {
+      this.head = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
     }
+  }
 
-    size() {
-        let count = 0; 
-        let node = this.head;
-        while (node) {
-            count++;
-            node = node.next
-        }
-        return count;
+  size() {
+    let count = 0;
+    let node = this.head;
+    while (node) {
+      count++;
+      node = node.next;
     }
+    return count;
+  }
 
-    getLast() {
-        let lastNode = this.head;
-        if (!lastNode) {
-            return null;
-        }
-        while (lastNode.next) {
-            lastNode = lastNode.next
-        }
-        return lastNode
+  getLast() {
+    let lastNode = this.head;
+    if (!lastNode) {
+      return null;
     }
+    while (lastNode.next) {
+      lastNode = lastNode.next;
+    }
+    return lastNode;
+  }
 
-    getFirst() {
-        return this.head? this.head : null;
-    }
+  getFirst() {
+    return this.head ? this.head : null;
+  }
 }
 
 const node1 = new ListNode('1');
@@ -68,6 +68,5 @@ const list = new LinkedList(node1);
 
 list.append('some other data');
 console.log(list.getLast());
-
 
 console.log(list);
