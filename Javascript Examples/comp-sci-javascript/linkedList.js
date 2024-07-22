@@ -62,11 +62,10 @@ class LinkedList {
 
 const node1 = new ListNode('1');
 const node2 = new ListNode('2');
+const node3 = new ListNode('3');
 node1.next = node2;
+node2.next = node3;
 
 const list = new LinkedList(node1);
 
-list.append('some other data');
-console.log(list.getLast());
-
-console.log(list);
+console.log(list.size());
