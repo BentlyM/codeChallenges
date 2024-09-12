@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "start": "node Javascript Examples/server.js --watch"
+    "start": "node --env-file=.env --watch Javascript-Examples/server.js"
   },
   "author": "",
   "license": "ISC"
